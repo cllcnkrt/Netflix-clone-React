@@ -21,7 +21,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
       setTrailerUrl("");
     } else {
       let trailerurl = await axios.get(
-        `/movie/${movie.id}/videos?api_key=fb34530271b349314af0de263d16ab5a`
+        `/movie/${movie.id}/videos?api_key=d8d61e203dab4fd0a3ec4766d207ca4c`
       );
       setTrailerUrl(trailerurl.data.results[0]?.key);
     }
@@ -35,9 +35,9 @@ function Row({ title, fetchUrl, isLargeRow }) {
           (movie) =>
             movie.backdrop_path !== null && (
               <img
-                className={`row__poster ${isLargeRow && "row_posterLarge"}`}
+                className={`row__poster ${isLargeRow && "row__posterLarge"}`}
                 src={`${baseImgUrl}${
-                  isLargeRow ? movie.poster_path : movie.backdrop_path
+                  isLargeRow ? movie.poster__path : movie.backdrop_path
                 }`}
                 alt={movie.name}
                 key={movie.id}
