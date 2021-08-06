@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios";
-
+import "./Row.css"
 const baseImgUrl = "https://image.tmdb.org/t/p/original";
 
 function Row({ title, fetchUrl, isLargeRow }) {
@@ -30,12 +30,12 @@ function Row({ title, fetchUrl, isLargeRow }) {
   return (
     <div className="row">
       <h2>{title}</h2>
-      <div className="row_posters">
+      <div className="row__posters">
         {movies.map(
           (movie) =>
             movie.backdrop_path !== null && (
               <img
-                className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+                className={`row__poster ${isLargeRow && "row_posterLarge"}`}
                 src={`${baseImgUrl}${
                   isLargeRow ? movie.poster_path : movie.backdrop_path
                 }`}
