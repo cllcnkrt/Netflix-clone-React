@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios";
-import "./Row.css"
+import "./Row.css";
+import YouTube from "react-youtube";
+import movieTrailer from "movie-trailer";
 const baseImgUrl = "https://image.tmdb.org/t/p/original";
 
 function Row({ title, fetchUrl, isLargeRow }) {
@@ -16,6 +18,13 @@ function Row({ title, fetchUrl, isLargeRow }) {
     fetchData();
   }, [fetchUrl]);
 
+  const opts = {
+    height: "390",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
   const handleClick = async (movie) => {
     if (trailerUrl) {
       setTrailerUrl("");
@@ -46,6 +55,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
             )
         )}
       </div>
+      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
     </div>
   );
 }
